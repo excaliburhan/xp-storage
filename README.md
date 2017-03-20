@@ -50,7 +50,7 @@ store.remove('name') // xp
 store.clear()
 ```
 
-### length
+### length()
 - get the length of keys
 - Example
 ```js
@@ -79,7 +79,7 @@ store.set('name2', 'xp2')
 let names = store.getAll() // Object {name1: "xp", name2: "xp2"}
 ```
 
-### keys
+### keys()
 - reurn all keys
 - Example
 ```js
@@ -88,7 +88,7 @@ store.set('name2', 'xp2')
 let names = store.keys() // ["name1", "name2"]
 ```
 
-### has
+### has()
 - return true if the key is defined, otherwise return false
 - Example
 ```js
