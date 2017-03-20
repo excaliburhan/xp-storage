@@ -13,7 +13,12 @@ export default {
   },
   get(key) {
     if (key) {
-      return JSON.parse(localStorage.getItem(key))
+      let value = localStorage.getItem(key)
+      try {
+        return JSON.parse(localStorage.getItem(key))
+      } catch (error) {
+        return value || undefined
+      }
     } else { // equal to getAll()
       let ret = {}
       this.forEach((key, value) => {
