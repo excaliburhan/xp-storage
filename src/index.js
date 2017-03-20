@@ -10,10 +10,11 @@ export default {
   set(key, value) {
     value = JSON.stringify(value)
     localStorage.setItem(key, value)
+    return this.get(key)
   },
   get(key) {
     if (key) {
-      let value = localStorage.getItem(key)
+      let value = localStorage.getItem(key) || undefined
       try {
         return JSON.parse(localStorage.getItem(key))
       } catch (error) {
@@ -29,6 +30,7 @@ export default {
   },
   remove(key) {
     localStorage.removeItem(key)
+    return this.get(key)
   },
   clear() {
     localStorage.clear()
