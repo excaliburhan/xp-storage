@@ -1104,9 +1104,30 @@ eslint-config-xiaoping@^1.1.1:
   dependencies:
     eslint "^2.0.0 || ^3.0.0"
 
+eslint-config-xp-fe@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/eslint-config-xp-fe/-/eslint-config-xp-fe-1.0.8.tgz#9a0e043492f4a6b15fe80dd962ca2e9fff2b3fec"
+  dependencies:
+    babel-eslint "^7.1.0"
+    eslint "^2.0.0 || ^3.0.0"
+    eslint-config-xp "^1.1.1"
+    eslint-plugin-html "^2.0.1"
+
+eslint-config-xp@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-xp/-/eslint-config-xp-1.1.1.tgz#0e6f04b793e0d039181e5e44ac2c7f437304956f"
+  dependencies:
+    eslint "^2.0.0 || ^3.0.0"
+
 eslint-plugin-html@^1.7.0:
   version "1.7.0"
   resolved "http://registry.npm.taobao.org/eslint-plugin-html/download/eslint-plugin-html-1.7.0.tgz#2a5b03884d8d56adf9ad9864e9c036480fb629c9"
+  dependencies:
+    htmlparser2 "^3.8.2"
+
+eslint-plugin-html@^2.0.1:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-html/-/eslint-plugin-html-2.0.3.tgz#7c89883ab0c85fa5d28b666a14a4e906aa90b897"
   dependencies:
     htmlparser2 "^3.8.2"
 
