@@ -9,8 +9,12 @@
 export default {
   set(key, value) {
     value = JSON.stringify(value)
-    localStorage.setItem(key, value)
-    return this.get(key)
+    try {
+      localStorage.setItem(key, value)
+      return this.get(key)
+    } catch (error) { // over limit
+      localStorage.clear()
+    }
   },
   get(key) {
     if (key) {
