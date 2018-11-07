@@ -1,4 +1,4 @@
-<p align="center"><img width="100" src="https://ws1.sinaimg.cn/large/006tNbRwly1fwzpyouukzj30e80e8t8r.jpg" alt="xp-miniui logo"></p>
+<p align="center"><img width="100" src="https://raw.githubusercontent.com/excaliburhan/xp-storage/master/logo.png" alt="logo"></p>
 
 # xp-storage
 A lib for html5 localStorage, support expired time.
@@ -16,7 +16,7 @@ LStorage.set('name', 'xp', '2018-11-11 23:59:59') // localStorage['xp_name'] = '
 
 // or with custom prefix
 import Storage from 'xp-storage'
-const LStorage = new Storage('sheep')
+const LStorage = new Storage({ prefix: 'sheep' })
 LStorage.set('name', 'xp', '2018-11-11 23:59:59') // localStorage['sheep_name'] = 'xp'
 ```
 
@@ -54,7 +54,7 @@ LStorage.remove('name') // xp
 ```
 
 ### keys()
-- get all keys in LStorage
+- get all keys in LStorage, note that expired keys will also be listed
 - Example
 ```js
 let keys = LStorage.keys()

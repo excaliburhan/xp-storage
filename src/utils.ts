@@ -8,8 +8,8 @@ export function getTimestamp(stamp) {
     return stamp
   }
   stamp = stamp.replace(/-|\./g, '/') // for ios
-  ret = new Date(stamp)
-  if (ret === 'Invalid Date') {
+  ret = +new Date(stamp)
+  if (isNaN(ret)) {
     return null
   }
   return ret

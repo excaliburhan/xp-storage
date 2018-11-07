@@ -44,9 +44,10 @@ export default class Storage {
     try {
       let expiredStamp = this.ls[this.getExpiredKey(key)] || Date.now() + 1000
       if (isExpired(expiredStamp)) {
-        return
+        this.remove(key)
+        return null
       }
-      ret = JSON.parse(this.getStoreKey(key))
+      ret = JSON.parse(this.ls[this.getStoreKey(key)])
     } catch (e) {}
     return ret || null
   }

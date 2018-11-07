@@ -1,6 +1,6 @@
 {
   "name": "xp-storage",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A lib for html5 localStorage, support expired time.",
   "license": "MIT",
   "main": "dist/index.common.js",
