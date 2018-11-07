@@ -1,28 +1,49 @@
 {
   "name": "xp-storage",
-  "version": "1.0.7",
-  "description": "A tiny lib for html5 localStorage",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "repository": "git@github.com:excaliburhan/xp-storage.git",
-  "author": "xiaoping <edwardhjp@gmail.com>",
+  "version": "2.0.0",
+  "description": "A lib for html5 localStorage, support expired time.",
   "license": "MIT",
+  "main": "dist/index.common.js",
+  "module": "dist/index.mjs",
+  "jsnext:main": "dist/index.mjs",
+  "types": "dist/typings/index.d.ts",
   "scripts": {
-    "prepublishOnly": "npm run build",
-    "dev": "rollup -c -w",
-    "build:umd": "rollup -c",
-    "build:es": "rollup -c rollup.config.es.js",
-    "build": "npm run build:umd && npm run build:es"
+    "clean": "rimraf ./dist",
+    "dev": "npm run clean && tsc -w",
+    "build": "npm run clean && npm run lint && node scripts/build.js",
+    "lint": "tslint --project tsconfig.json",
+    "test": "npm run lint && npm run build && npm run jasmine",
+    "jasmine": "istanbul cover jasmine-node test",
+    "prepublish": "npm run test"
+  },
+  "dependencies": {
+    "tslib": "^1.9.3"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-preset-es2015-rollup": "^3.0.0",
-    "eslint-config-xp": "^1.1.7",
-    "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-commonjs": "^8.2.6",
-    "rollup-plugin-eslint": "^4.0.0",
-    "rollup-plugin-node-resolve": "^3.0.2",
-    "rollup-plugin-replace": "^2.0.0",
-    "rollup-plugin-uglify": "^3.0.0"
+    "@types/node": "^9.6.31",
+    "ghooks": "^2.0.4",
+    "istanbul": "^0.4.5",
+    "jasmine-node": "^1.15.0",
+    "lodash.merge": "^4.6.1",
+    "multi-shell": "^1.0.3",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.58.2",
+    "rollup-plugin-typescript2": "^0.13.0",
+    "tslint": "^5.11.0",
+    "tslint-config-standard": "^7.1.0",
+    "typescript": "^2.9.2",
+    "uglify-js": "^3.4.8"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "npm run lint",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=6"
   }
 }

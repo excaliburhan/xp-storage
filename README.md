@@ -1,5 +1,7 @@
+<p align="center"><img width="100" src="https://ws1.sinaimg.cn/large/006tNbRwly1fwzpyouukzj30e80e8t8r.jpg" alt="xp-miniui logo"></p>
+
 # xp-storage
-A tiny lib for html5 localStorage
+A lib for html5 localStorage, support expired time.
 
 ## Installation
 
@@ -8,91 +10,93 @@ A tiny lib for html5 localStorage
 ## Usage
 
 ```js
-import store from 'xp-storage'
-// var store = require('xp-storage').default
+import { LStorage } from 'xp-storage'
 
-store.set('test', 'abc')
-let test = store.get('test')
-console.log(test) // abc
+LStorage.set('name', 'xp', '2018-11-11 23:59:59') // localStorage['xp_name'] = 'xp'
+
+// or with custom prefix
+import Storage from 'xp-storage'
+const LStorage = new Storage('sheep')
+LStorage.set('name', 'xp', '2018-11-11 23:59:59') // localStorage['sheep_name'] = 'xp'
 ```
 
 ## API
 
-### set(key, value)
-- set a key and return the set value
+### set(key, value, expired)
+- set a key and return the value
 - Example
 ```js
-let name = store.set('name', 'xp') // xp
+let name = LStorage.set('name', 'xp', '2018-11-11 23:59:59') // xp
+```
+
+### setWithSec(key, value, expired)
+- set a key and expires with seconds
+- Example
+```js
+let name = LStorage.setWithSec('name', 'xp', 3600) // xp, after 3600 seconds, key will be expired
 ```
 
 ### get(key)
-- return the value of key, return undefined if it is not defined; get() = getAll()
+- return the value of key, return null if it is undefined or expired
 - Example
 ```js
-store.set('name1', 'xp')
-store.set('name2', 'xp2')
-let name1 = store.get('name1') // xp
-let name2 = store.get('name3') // undefined
-let names = store.get() // Object {name1: "xp", name2: "xp2"}
+LStorage.set('name1', 'xp')
+LStorage.set('name2', 'xp2')
+let name1 = LStorage.get('name1') // xp
+let name2 = LStorage.get('name2') // null
 ```
 
 ### remove(key)
-- remove a key and return the value of removed key, return undefined if it is not defined
+- remove a key and return the value of removed key, return null if it is undefined
 - Example
 ```js
-store.remove('name') // xp
-```
-
-### clear()
-- remove all keys
-- Example
-```js
-store.clear()
-```
-
-### length()
-- get the length of keys
-- Example
-```js
-store.set('name', 'xp')
-let len = store.length() // 1
-```
-
-### forEach(callback)
-- foreach all keys with callbacks
-- Example
-```js
-store.set('name', 'xp')
-store.set('obj', { a: 1 })
-store.forEach((key, value) => {
-  console.log(key, value)
-})
-// name, xp
-// obj, Object {a: 1}
-```
-### getAll()
-- return all keys and values
-- Example
-```js
-store.set('name1', 'xp')
-store.set('name2', 'xp2')
-let names = store.getAll() // Object {name1: "xp", name2: "xp2"}
+LStorage.remove('name') // xp
 ```
 
 ### keys()
-- reurn all keys
+- get all keys in LStorage
 - Example
 ```js
-store.set('name1', 'xp')
-store.set('name2', 'xp2')
-let names = store.keys() // ["name1", "name2"]
+let keys = LStorage.keys()
+```
+
+### length()
+- return the length of all keys in LStorage
+- Example
+```js
+let len = LStorage.length()
+```
+
+### forEach(callback)
+- loop all keys in LStorage and callback
+- Example
+```js
+LStorage.forEach((k, v) => {
+  console.log(k, v)
+})
+```
+
+### clear()
+- remove all keys in LStorage
+- Example
+```js
+LStorage.clear()
+```
+
+### getAll()
+- get all key and value in LStorage
+- Example
+```js
+LStorage.set('name1', 'xp')
+LStorage.set('name2', 'xp2')
+let names = LStorage.getAll() // Object { 'xp-name1': "xp", 'xp-name2': "xp2" }
 ```
 
 ### has()
 - return true if the key is defined, otherwise return false
 - Example
 ```js
-store.set('name1', 'xp')
-store.has('name1') // true
-store.has('name3') // false
+LStorage.set('name1', 'xp')
+LStorage.has('name1') // true
+LStorage.has('name2') // false
 ```
