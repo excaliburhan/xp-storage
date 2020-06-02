@@ -1,11 +1,9 @@
 {
   "name": "xp-storage",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "A lib for localStorage, support expired time.",
   "license": "MIT",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "jsnext:main": "dist/index.mjs",
   "types": "dist/typings/index.d.ts",
   "scripts": {
     "clean": "rimraf ./dist",
