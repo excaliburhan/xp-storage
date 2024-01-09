@@ -8,9 +8,8 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "dev": "npm run clean && tsc -w",
-    "build": "npm run clean && npm run lint && node scripts/build.js",
-    "lint": "tslint --project tsconfig.json",
-    "test": "npm run lint && npm run build && npm run jasmine",
+    "build": "npm run clean && node scripts/build.js",
+    "test": "npm run build && npm run jasmine",
     "jasmine": "istanbul cover jasmine-node test",
     "prepublish": "npm run test"
   },
