@@ -1,6 +1,6 @@
 {
   "name": "xp-storage",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Lib for localStorage, support expired time.",
   "license": "MIT",
   "main": "dist/index.js",
@@ -14,10 +14,9 @@
     "jasmine": "istanbul cover jasmine-node test",
     "prepublish": "npm run test"
   },
-  "dependencies": {
-    "tslib": "^1.9.3"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "tslib": "^1.9.3",
     "@types/node": "^9.6.31",
     "ghooks": "^2.0.4",
     "istanbul": "^0.4.5",
