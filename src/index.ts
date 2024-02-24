@@ -42,7 +42,7 @@ export default class Storage {
   }
 
   get(key) {
-    let ret = null;
+    let ret: any = null;
     try {
       let expiredStamp = this.ls[this.getExpiredKey(key)] || Date.now() + 1000;
       if (isExpired(expiredStamp)) {
@@ -54,7 +54,7 @@ export default class Storage {
     return ret;
   }
 
-  remove(key) {
+  remove(key): any {
     let ret = null;
     try {
       ret = this.ls[this.getStoreKey(key)];
@@ -65,7 +65,7 @@ export default class Storage {
   }
 
   keys() {
-    let ret: any[] = [];
+    let ret: string[] = [];
     const len = this.ls.length;
     for (let i = 0; i < len; i++) {
       let key = this.ls.key(i);
