@@ -6,7 +6,7 @@ export default class Storage {
   private expiredExt: string;
   private ls;
   constructor({ prefix = 'xp' } = {} as ConfigInterface) {
-    this.ls = window.localStorage || localStorage;
+    this.ls = localStorage || window.localStorage;
     this.prefix = `${prefix}_`;
     this.expiredExt = `__expired__`;
   }
